@@ -2,5 +2,8 @@
 name = "pafn"
 version = "0.1.0"
 edition = "2021"
-
+authors = ["Tobias Hoffmann"]
+licence = "MIT"
+description = "So far nothing, might turn into a ML library"
+repository = "https://github.com/Garbaz/pafn"
 [dependencies]
