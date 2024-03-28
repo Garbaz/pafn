@@ -99,15 +99,15 @@ fn layer<'a, P: 'a>(x: PaFn<'a, P, f64>) -> PaFn<((f64, P), f64), f64> {
 fn layer2<'a>(x: f64) -> PaFn<'a, (f64, f64), f64> {
     let w = PaFn::param();
     let b = PaFn::param();
-    let q = w.fmap(move |w| w * x);
-    let qq = q.lift(b, |q, b| q + b);
-    qq.fmap(sigmoid_)
+    w.fmap(move |w| w * x).lift(b, |q, b| q + b).fmap(sigmoid_)
     // let y = w.fmap(|q| q * x);
     // let yy = y.lift(b, |q, qq| q + qq);
     // yy.fmap(sigmoid_)
 }
 
 fn layer3<'a>(x: f64) -> PaFn<'a, (f64, f64), f64> {
+    let w = PaFn::param();
+    let b = PaFn::param();
     
 }
 
