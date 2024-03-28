@@ -1,6 +1,6 @@
 # ***Pa***rametrized ***F***unctio***n***s
 
-The goal here is to come up with some form (library / new programming language / ...) a clean abstraction over functions that have parameters, such as neural networks or probabilistic programs in machine learning.
+The goal here is to come up with a clean abstraction in some form (library / new programming language / ...) over functions that have parameters, such as neural networks or probabilistic programs in machine learning.
 
 
 ## The Difference between Parameters and Arguments
