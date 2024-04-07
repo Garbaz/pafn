@@ -105,11 +105,11 @@ fn layer2<'a>(x: f64) -> PaFn<'a, (f64, f64), f64> {
     // yy.fmap(sigmoid_)
 }
 
-fn layer3<'a>(x: f64) -> PaFn<'a, (f64, f64), f64> {
-    let w = PaFn::param();
-    let b = PaFn::param();
+// fn layer3<'a>(x: f64) -> PaFn<'a, (f64, f64), f64> {
+//     let w = PaFn::param();
+//     let b = PaFn::param();
     
-}
+// }
 
 // Why need `Copy`?
 // fn arg<'a, T: 'a + Copy>(x: T) -> PaFn<'a, (), T> {
