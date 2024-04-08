@@ -55,13 +55,13 @@ impl<P, O, F: Fn(P) -> O> FnWrapper<P, O, F> {
 trait PaFn<O> {
     type Param;
 
-    fn take_param(self, p: Self::Param) -> O;
+    fn parametrize(self, p: Self::Param) -> O;
 }
 
 impl<P, O, F: Fn(P) -> O> PaFn<O> for FnWrapper<P, O, F> {
     type Param = P;
 
-    fn take_param(self, p: Self::Param) -> O {
+    fn parametrize(self, p: Self::Param) -> O {
         (self.f)(p)
     }
 }
@@ -87,11 +87,30 @@ fn relu(x: f64) -> f64 {
 fn g(x: f64) -> impl PaFn<f64> {
     FnWrapper::new(move |param| -> f64 {
         let ParamList(param, p) = param;
-        let y = f(x).take_param(p);
+        let y = f(x).parametrize(p);
         let return_value = relu(y);
         let () = param;
         return_value
     })
 }
+
+enum ParamWrapper<P, I: Fn() -> P> {
+    Uninit(I),
+    Init(P),
+}
+
+// fn h(x: f64) -> impl PaFn<f64> {
+//     FnWrapper::new(move |param| -> f64 {
+//         let (current_param, param) : (ParamWrapper<f64,_>,_) = param;
+//         let w = match current_param {
+//             ParamWrapper::Uninit(i) => i(),
+//             ParamWrapper::Init(p) => p,
+//         };
+
+//         let () = param;
+
+//         w * x
+//     })
+// }
 
 fn main() {}
